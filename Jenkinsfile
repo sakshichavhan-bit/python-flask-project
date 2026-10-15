@@ -33,7 +33,7 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                 sh "docker push sakshi44:$IMAGE_TAG"               
+                 sh "docker push sakshi44/python-flask:$IMAGE_TAG"               
         }
     }
 
