@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    
     }
 
     stages {
@@ -13,9 +13,15 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t python-app .
+                sh "docker build tag python-app ."
                 sh "docker tag python-app sakshi44/python-flask-app"
                 
+            }
+        }
+        stage('Docker Login') {
+            steps {
+                sh 'docker login -u "username" -p "password" 
+
             }
         }
 
@@ -29,5 +35,5 @@ pipeline {
                 sh 'docker run -d -p 8080:5000 sakshi44/python-flask-app'
             }
         }
-        
+    }
 }
