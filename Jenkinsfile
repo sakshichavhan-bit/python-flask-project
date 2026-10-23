@@ -28,20 +28,8 @@ pipeline {
        }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d -p 8080:80 sakshi44/python-flask-app:$IMAGE_TAG'
+                sh 'docker run -d -p 8080:5000 sakshi44/python-flask-app:$IMAGE_TAG'
             }
         }
         
-
-    post {
-        success {
-            echo 'Docker image pushed successfully to Docker Hub.'
-        }
-        failure {
-            echo 'Pipeline failed. Check Jenkins console logs.'
-        }
-        always {
-            sh 'docker image prune -f || true'
-        }
-    }
 }
