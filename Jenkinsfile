@@ -14,7 +14,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh "docker build -t python-app .
-                sh "docker tag python-app:$IMAGE_TAG sakshi44/python-flask-app"
+                sh "docker tag python-app sakshi44/python-flask-app"
                 
             }
         }
